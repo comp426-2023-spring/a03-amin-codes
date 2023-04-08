@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import minimist from 'minimist';
-import rpsls from "../lib/rpsls.js";
+import {rpsls} from "../lib/rpsls.js";
 
 const argv = minimist(process.argv.slice(2));
 
@@ -30,7 +30,7 @@ const rules = `Rules for the Lizard-Spock Expansion of Rock Paper Scissors:
   - Spock VAPORIZES Rock
   - Rock CRUSHES Scissors`;
 	
-const choices = ["rocker", "paper", "scissors", "lizard", "spock"];
+const choices = ["rock", "paper", "scissors", "lizard", "spock"];
 
 if (argv.h || argv.help) {
 	console.log(help);
@@ -41,8 +41,8 @@ if (argv.r || argv.rules) {
 	process.exit(0);
 }
 
-if (args._.length != 0) {
-	const choice = args._[0].toLowerCase();
+if (argv._.length != 0) {
+	const choice = argv._[0].toLowerCase();
 	
 	if (choices.includes(choice)) {
 		console.log(rpsls(choice));
